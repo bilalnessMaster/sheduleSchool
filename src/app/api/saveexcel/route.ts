@@ -1,4 +1,5 @@
 
+import { SheetRow } from "@/app/lib/types";
 import { prisma } from "@/lib/db";
 import { NextResponse } from "next/server"
 import * as XLSX from "xlsx"
@@ -19,14 +20,15 @@ export const POST = async (req : Request) =>{
         const sheetName = workbook.SheetNames[0];
         const sheet  = workbook.Sheets[sheetName];
         const sheetData = XLSX.utils.sheet_to_json(sheet);
-        const parsedData = sheetData.map((row : unknown) => {
-            // const strFormateur = row?.__EMPTY?.toUpperCase();
-            const keys = Object.keys(row as keyof typeof row).length
-            // console.log(keys);
+        const parsedData = (sheetData as SheetRow[]).map((row : SheetRow) => {
+            const typedRow = row as SheetRow;
+            const keys = Object.keys(typedRow).length
+
 
 
             if(
-                !days.includes(row?.__EMPTY?.toLowerCase()) &&
+                typedRow?.__EMPTY !== undefined &&
+                !days.includes(typedRow?.__EMPTY?.toLowerCase()) &&
                 row?.__EMPTY !== undefined &&
                 row?.__EMPTY !== "FORMATEUR" &&
                 keys === 9){
@@ -48,16 +50,20 @@ export const POST = async (req : Request) =>{
 
                 }
             }
-
+            return null;
         });
 
-        const filtredData = parsedData.filter((item) => item ); // null
-        await prisma.$transaction([
-            prisma.emploi.deleteMany(), // Delete all existing records
-            prisma.emploi.createMany({ data: filtredData }), // Insert new records
-        ]);
+        try {
+            const filtredData = parsedData.filter((item) => item !== null && item !== undefined);
 
-        return NextResponse.json({filtredData , success : true , message : "data saved successfully"} , {status : 200})
+            await prisma.$transaction([
+                prisma.emploi.deleteMany(), // Delete all existing records
+                prisma.emploi.createMany({ data: filtredData }), // Insert new records
+            ]);
+        } catch (error) {
+            console.error('Transaction failed:', error);
+        }
+        return NextResponse.json({ success : true , message : "data saved successfully"} , {status : 200})
     } catch (error) {
         console.log(error);
 

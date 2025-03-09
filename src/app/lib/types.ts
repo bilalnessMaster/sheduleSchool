@@ -14,3 +14,19 @@ export interface EmploiProps {
     presents?: string; // Present attendees (optional)
     emargement?: number; // Signature/attendance percentage (optional)
   }
+export type SheetRow = {
+    [key: string]: unknown; // Dynamic keys like __EMPTY, __EMPTY_1, etc.
+    __EMPTY?: string; // Formateur
+    __EMPTY_1?: string; // Module
+    __EMPTY_2?: string; // Seance
+    __EMPTY_3?: string; // Groupe
+    __EMPTY_4?: string; // Salle
+    __EMPTY_5?: string; // Jour
+    __EMPTY_6?: string; // Moment
+    __EMPTY_7?: string; // Time
+    __EMPTY_8?: string | number; // Date
+    __EMPTY_9?: string; // n
+    __EMPTY_10?: string; // Prevus
+    __EMPTY_11?: string; // Presents
+    __EMPTY_12?: string | number; // Emargement
+  };
