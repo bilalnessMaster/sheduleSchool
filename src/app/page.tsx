@@ -73,7 +73,7 @@ export default async function Home(props : {searchParams : Promise<{groupe : str
         <main className="font-outfit flex flex-col h-screen dark:text-neutral-200 relative" >
             <Header groupes={groupes} />
             <div className="w-full border-b dark:border-b-neutral-50 ">
-            <section className="container mx-auto border-r border-l  dark:border-l-neutral-50 dark:border-r-neutral-50 font-normal" id="schedule">
+            <section className="container whitespace-nowrap mx-auto border-r border-l  dark:border-l-neutral-50 dark:border-r-neutral-50 font-normal" id="schedule">
                     <div className="flex   ">
                         <div className=" w-20 md:w-64 border-r border-b dark:border-b-neutral-50 dark:border-r-neutral-50">
                             <h1 className="flex items-center justify-center text-sm md:text-xl">
@@ -86,7 +86,7 @@ export default async function Home(props : {searchParams : Promise<{groupe : str
                         {
                             heures.map((heure , index) => (
                                 <div key={index} className=" flex flex-grow flex-col items-center justify-center border-b border-r dark:border-b-neutral-50 dark:border-r-neutral-50">
-                                    <h1 className="text-sm md:text-xl">{heure.heure}</h1>
+                                    <h1 className="text-xs md:text-xl">{heure.heure}</h1>
                                 </div>
                             ))
                         }
