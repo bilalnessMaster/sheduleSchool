@@ -26,7 +26,7 @@ const IsdarkMode = () => {
     if (!isLoading) return null;
 
     return (
-        <button onClick={() => setIsDarkMode(!isDarkMode)}>
+        <button onClick={() => setIsDarkMode(!isDarkMode)} className='flex items-center justify-center bg-neutral-100 dark:bg-neutral-800 px-2 py-2 rounded '>
             {isDarkMode ? <Sun /> : <SunMoon />}
         </button>
     );

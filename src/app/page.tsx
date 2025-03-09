@@ -75,8 +75,8 @@ export default async function Home(props : {searchParams : Promise<{groupe : str
             <div className="w-full border-b dark:border-b-neutral-50 ">
             <section className="container mx-auto border-r border-l  dark:border-l-neutral-50 dark:border-r-neutral-50 font-normal" id="schedule">
                     <div className="flex   ">
-                        <div className="w-64 border-r border-b dark:border-b-neutral-50 dark:border-r-neutral-50">
-                            <h1 className="flex items-center justify-center text-xl">
+                        <div className=" w-20 md:w-64 border-r border-b dark:border-b-neutral-50 dark:border-r-neutral-50">
+                            <h1 className="flex items-center justify-center text-sm md:text-xl">
                                 <span>Jour</span>
                                 <span>/</span>
                                 <span>Heures</span>
@@ -86,18 +86,18 @@ export default async function Home(props : {searchParams : Promise<{groupe : str
                         {
                             heures.map((heure , index) => (
                                 <div key={index} className=" flex flex-grow flex-col items-center justify-center border-b border-r dark:border-b-neutral-50 dark:border-r-neutral-50">
-                                    <h1 className="text-2xl">{heure.heure}</h1>
+                                    <h1 className="text-sm md:text-xl">{heure.heure}</h1>
                                 </div>
                             ))
                         }
                         </div>
                     </div>
                 <div className="w-full h-200 rounded-xl bg-white dark:bg-[#262629] flex">
-                    <div className="grid w-64">
+                    <div className="grid w-20 md:w-64">
                     {
                         jours.map((jour , index) => (
                             <div key={index} className="flex flex-col items-center justify-center border-b border-r last:border-b-0 h-[8.34rem] dark:border-b-neutral-50 dark:border-r-neutral-50 ">
-                                <h1 className="text-2xl ">{jour.jour}</h1>
+                                <h1 className="md:text-xl ">{jour.jour}</h1>
                             </div>
                         ))
                     }
@@ -113,7 +113,7 @@ export default async function Home(props : {searchParams : Promise<{groupe : str
             <div className="w-full flex-grow ">
                    <div className="container mx-auto border-r border-l dark:border-l-neutral-50 dark:border-r-neutral-50 h-full"></div>
             </div>
-                   
+
         </main>
 );
 }
