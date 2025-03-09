@@ -1,3 +1,4 @@
+
 import { prisma } from "@/lib/db";
 import { NextResponse } from "next/server"
 import * as XLSX from "xlsx"
@@ -18,9 +19,9 @@ export const POST = async (req : Request) =>{
         const sheetName = workbook.SheetNames[0];
         const sheet  = workbook.Sheets[sheetName];
         const sheetData = XLSX.utils.sheet_to_json(sheet);
-        const parsedData = sheetData.map((row : any) => {
+        const parsedData = sheetData.map((row : unknown) => {
             // const strFormateur = row?.__EMPTY?.toUpperCase();
-            const keys = Object.keys(row).length
+            const keys = Object.keys(row as keyof typeof row).length
             // console.log(keys);
 
 
@@ -50,7 +51,7 @@ export const POST = async (req : Request) =>{
 
         });
 
-        const filtredData = parsedData.filter((item : any) => item );
+        const filtredData = parsedData.filter((item) => item ); // null
         await prisma.$transaction([
             prisma.emploi.deleteMany(), // Delete all existing records
             prisma.emploi.createMany({ data: filtredData }), // Insert new records

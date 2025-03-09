@@ -1,9 +1,9 @@
 
 import Header from "@/components/Header";
 import Square from "@/components/square";
-import { time } from "console";
 
 import { fetchGroupe, fetchGroupeByName } from "./lib/query";
+
 const heures = [
     {
         heure : "08:30 - 10:15"
@@ -63,17 +63,17 @@ export default async function Home(props : {searchParams : Promise<{groupe : str
     const squares = []
     for(let row = 0 ; row<6; row++){
         for(let column= 0 ; column<4; column++){
-            const square = <Square jour={rows[row as keyof typeof rows]} heure={columns[column as keyof typeof columns]} data={timeline}  key={column+row*Math.random()-Math.random()}  position={[column,row]} />
+            const square = <Square jour={rows[row as keyof typeof rows]} heure={columns[column as keyof typeof columns]} data={timeline}  key={column+row*Math.random()-Math.random()}   />
             squares.push(square)
         }
     }
 
 
     return (
-        <main className="font-outfit flex flex-col h-screen dark:text-neutral-200">
+        <main className="font-outfit flex flex-col h-screen dark:text-neutral-200 relative" >
             <Header groupes={groupes} />
             <div className="w-full border-b dark:border-b-neutral-50 ">
-            <section className="container mx-auto border-r border-l  dark:border-l-neutral-50 dark:border-r-neutral-50 font-normal ">
+            <section className="container mx-auto border-r border-l  dark:border-l-neutral-50 dark:border-r-neutral-50 font-normal" id="schedule">
                     <div className="flex   ">
                         <div className="w-64 border-r border-b dark:border-b-neutral-50 dark:border-r-neutral-50">
                             <h1 className="flex items-center justify-center text-xl">
@@ -113,7 +113,7 @@ export default async function Home(props : {searchParams : Promise<{groupe : str
             <div className="w-full flex-grow ">
                    <div className="container mx-auto border-r border-l dark:border-l-neutral-50 dark:border-r-neutral-50 h-full"></div>
             </div>
-
+                   
         </main>
 );
 }
