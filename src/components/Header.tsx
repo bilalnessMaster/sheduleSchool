@@ -42,7 +42,7 @@ const Header = ({groupes} : Props) => {
                 </Select>
                 <IsdarkMode />
                 </nav>
-            </header>
+    </header>
   )
 }
 

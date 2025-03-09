@@ -7,7 +7,7 @@ const Square = ({ data , heure , jour} : {  data : EmploiProps[] | undefined, he
     return (
     <div  className="flex flex-col items-center justify-center border-b border-r last:border-b-0 h-[8.34rem] font-outfit dark:border-b-neutral-50 dark:border-r-neutral-50 overflow-auto">
     <h1 className="text-sm md:text-xl md:text-center font-semibold">{shedule?.module}</h1>
-    <p className=" text-xs md:text-sm text-center">{shedule?.formateur}</p>
+    <p className="text-xs md:text-sm text-center">{shedule?.formateur}</p>
     <p className="text-xs md:text-sm">{shedule?.salle}</p>
     </div>
   )
