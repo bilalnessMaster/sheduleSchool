@@ -6,16 +6,16 @@ import { fetchGroupe, fetchGroupeByName } from "./lib/query";
 
 const heures = [
     {
-        heure : "08:30 - 10:15"
+        heure : "08:30 - 11:00"
     },
     {
-        heure : "10:15 - 12:45"
+        heure : "11:00 - 11H-13H30"
     },
     {
-        heure : "12:45 - 14:30"
+        heure : "13H30 - 16H00"
     },
     {
-        heure : "14:30 - 16:30"
+        heure : "16H - 18H30"
     },
 ]
 const jours = [
